@@ -1,9 +1,9 @@
 // AWS Variables
 
-group_tag          = "s2s-vpn"
-region             = "us-east-1"
-vpc_name           = "vpc-remote"
-vpc_cidr           = "10.60.0.0/16"
+region = "us-east-1"
+
+group_name = "" # Used for tagging related components 
+
 gateway_name       = "local-network"
 gateway_ip_address = ""   # The local router IP
 gateway_address_space = [ # The local networks
@@ -11,7 +11,8 @@ gateway_address_space = [ # The local networks
   "192.168.1.0/24"
 ]
 
-virtual_private_gateway_name = "remote-vpc-gateway"
+network_cidr = "10.60.0.0/16"
+network_name = "remote-network"
 
 subnets = {
   subnet-01 = {
@@ -23,3 +24,5 @@ subnets = {
     subnet = "10.60.2.0/24"
   }
 }
+
+virtual_gateway_name = "remote-gateway"

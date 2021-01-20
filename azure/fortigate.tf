@@ -2,17 +2,19 @@ module "fortigate" {
 
   source = "../fortinet"
 
-  fortigate_api_token  = ""
-  fortigate_ip_or_fqdn = ""
+  fortigate_api_token  = var.fortigate_api_token
+  fortigate_ip_or_fqdn = var.fortigate_ip_or_fqdn
 
-  tunnel_name_prefix    = "AZUREVPN"
-  firewall_address_name = "AZUREVPN_${var.vnet_name}"
-  remote_cidr           = var.vnet_cidr
+  tunnel_name_prefix    = var.tunnel_name_prefix
+  firewall_address_name = "${var.tunnel_name_prefix}_${var.network_name}"
+  remote_cidr           = var.network_cidr
 
-  tunnel_phase1_proposal = "aes256-sha1 3des-sha1 aes256-sha256"
-  tunnel_phase2_proposal = "aes256-sha1 3des-sha1 aes256-sha256"
+  tunnel_phase1_proposal = var.tunnel_phase1_proposal
+  tunnel_phase2_proposal = var.tunnel_phase2_proposal
 
-  # Azure creates a single tunnel
+  fortigate_interface = "wan1"
+
+  # Azure creates a single tunnel by default
   tunnel_info = [
     {
       tunnel_ip             = azurerm_public_ip.public_ip.ip_address

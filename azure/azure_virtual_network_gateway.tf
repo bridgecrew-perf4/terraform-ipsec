@@ -3,14 +3,14 @@ resource "azurerm_subnet" "subnet_gateway" {
   depends_on = [azurerm_virtual_network.virtual_network]
 
   name                 = "GatewaySubnet"
-  address_prefixes     = [var.virtual_network_gateway_subnet]
+  address_prefixes     = [var.virtual_gateway_subnet]
   resource_group_name  = azurerm_resource_group.resource_group.name
   virtual_network_name = azurerm_virtual_network.virtual_network.name
 
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  name                = var.virtual_network_gateway_public_ip_name
+  name                = var.virtual_gateway_public_ip_name
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
 
@@ -22,7 +22,7 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 resource "azurerm_virtual_network_gateway" "virtual_network_gateway" {
-  name                = var.virtual_network_gateway_name
+  name                = var.virtual_gateway_name
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
 
@@ -46,7 +46,7 @@ resource "azurerm_virtual_network_gateway" "virtual_network_gateway" {
 }
 
 resource "azurerm_virtual_network_gateway_connection" "connection" {
-  name                = var.virtual_network_gateway_connection_name
+  name                = var.virtual_gateway_connection_name
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
 

@@ -13,7 +13,7 @@ resource "fortios_vpnipsec_phase1interface" "phase1" {
   proposal          = var.tunnel_phase1_proposal
   dhgrp             = "2"
   keylife           = 28800
-  interface         = "wan1"
+  interface         = var.fortigate_interface
   peertype          = "any"
 }
 

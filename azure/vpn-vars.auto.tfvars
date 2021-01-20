@@ -1,9 +1,9 @@
 // Azure Variables
 
-resource_group     = "s2s-vpn"
-location           = "eastus"
-vnet_name          = "vnet-remote"
-vnet_cidr          = "10.50.0.0/16"
+region = "eastus"
+
+group_name = ""
+
 gateway_name       = "local-network"
 gateway_ip_address = ""   # The local router IP
 gateway_address_space = [ # The local networks
@@ -11,11 +11,8 @@ gateway_address_space = [ # The local networks
   "192.168.1.0/24"
 ]
 
-virtual_network_gateway_name = "remote-vnet-gateway"
-
-virtual_network_gateway_connection_name = "local-to-remote"
-virtual_network_gateway_public_ip_name  = "remote-vnet-gateway-ip"
-virtual_network_gateway_subnet          = "10.50.0.0/24"
+network_cidr = "10.50.0.0/16"
+network_name = "remote-network"
 
 subnets = {
   subnet-01 = {
@@ -34,3 +31,8 @@ subnets = {
 # the Azure provider will return the PSK when it is queried.
 
 shared_key = "Fortinet123!!"
+
+virtual_gateway_connection_name = "local-to-remote"
+virtual_gateway_name            = "remote-gateway"
+virtual_gateway_public_ip_name  = "remote-vnet-gateway-ip"
+virtual_gateway_subnet          = "10.50.0.0/24"

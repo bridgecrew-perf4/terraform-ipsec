@@ -6,7 +6,7 @@ resource "aws_vpn_connection" "site_to_site" {
 
   tags = {
     Name  = var.gateway_name
-    Group = var.group_tag
+    Group = var.group_name
   }
 }
 

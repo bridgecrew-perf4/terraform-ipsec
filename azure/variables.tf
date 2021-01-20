@@ -1,16 +1,28 @@
-variable "resource_group" {
+variable "gateway_ip_address" {
   type = string
 }
 
-variable "location" {
+variable "gateway_name" {
   type = string
 }
 
-variable "vnet_name" {
+variable "gateway_address_space" {
+  type = list(string)
+}
+
+variable "group_name" {
   type = string
 }
 
-variable "vnet_cidr" {
+variable "network_cidr" {
+  type = string
+}
+
+variable "network_name" {
+  type = string
+}
+
+variable "region" {
   type = string
 }
 
@@ -25,30 +37,16 @@ variable "subnets" {
   }))
 }
 
-variable "gateway_ip_address" {
+variable "virtual_gateway_connection_name" {
   type = string
 }
 
-variable "gateway_address_space" {
-  type = list(string)
-}
-
-variable "virtual_network_gateway_subnet" {
+variable "virtual_gateway_name" {
   type = string
 }
-
-variable "gateway_name" {
+variable "virtual_gateway_public_ip_name" {
   type = string
 }
-
-variable "virtual_network_gateway_public_ip_name" {
-  type = string
-}
-
-variable "virtual_network_gateway_name" {
-  type = string
-}
-
-variable "virtual_network_gateway_connection_name" {
+variable "virtual_gateway_subnet" {
   type = string
 }

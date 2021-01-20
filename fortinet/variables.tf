@@ -7,6 +7,9 @@ variable "fortigate_api_token" {
   type = string
 }
 
+variable "fortigate_interface" {
+  type = string
+}
 variable "tunnel_name_prefix" {
   type = string
 }

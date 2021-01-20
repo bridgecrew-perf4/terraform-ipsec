@@ -5,6 +5,6 @@ resource "aws_customer_gateway" "customer_gateway" {
 
   tags = {
     Name  = var.gateway_name
-    Group = var.group_tag
+    Group = var.group_name
   }
 }
