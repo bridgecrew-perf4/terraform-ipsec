@@ -1,6 +1,6 @@
 module "fortigate" {
 
-  source = "../fortinet"
+  source = "../fortigate"
 
   fortigate_api_token  = var.fortigate_api_token
   fortigate_ip_or_fqdn = var.fortigate_ip_or_fqdn
@@ -12,7 +12,7 @@ module "fortigate" {
   tunnel_phase1_proposal = var.tunnel_phase1_proposal
   tunnel_phase2_proposal = var.tunnel_phase2_proposal
 
-  fortigate_interface = "wan1"
+  fortigate_interface = var.fortigate_interface
 
   # Azure creates a single tunnel by default
   tunnel_info = [

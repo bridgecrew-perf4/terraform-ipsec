@@ -1,6 +1,6 @@
 module "fortigate" {
 
-  source = "../fortinet"
+  source = "../fortigate"
 
   fortigate_api_token  = var.fortigate_api_token
   fortigate_ip_or_fqdn = var.fortigate_ip_or_fqdn

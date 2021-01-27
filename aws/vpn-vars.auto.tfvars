@@ -11,9 +11,11 @@ gateway_address_space = [ # The local networks
   "192.168.1.0/24"
 ]
 
+# The Cloud network CIDR
 network_cidr = "10.60.0.0/16"
 network_name = "remote-network"
 
+# The Cloud network subnets, minimally one needs to be defined
 subnets = {
   subnet-01 = {
     name   = "subnet-01"
