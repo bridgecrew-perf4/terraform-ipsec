@@ -82,7 +82,7 @@ To remove resources with Terraform
 
 Variable values can be specified in a number of ways
 - In files `.tf`, `.tfvars`, `.auto.tfvars`
-- On the commandline using `-var`
+- On the command line using `-var`
   - `terraform plan -var "fortigate_ip_or_fqdn=192.168.20.99"`
-- On the commandline referenceing a variables files `-varf-file`
+- On the command line referencing a variables files `-var-file`
   - `terraform plan -var-file ../my_vars.tf`
