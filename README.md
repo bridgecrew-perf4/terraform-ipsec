@@ -7,6 +7,9 @@ Terraform modules to configure a Site-to-Site VPN with the Cloud provider and a 
 - [Connecting a local FortiGate to an AWS VPC VPN](https://docs.fortinet.com/vm/aws/fortigate/6.4/aws-cookbook/6.4.0/506140/connecting-a-local-fortigate-to-an-aws-vpc-vpn)
 - [Connecting a local FortiGate to an Azure VNet VPN](https://docs.fortinet.com/document/fortigate/6.4.0/azure-cookbook/989216/connecting-a-local-fortigate-to-an-azure-vnet-vpn)
 
+Example of a Local FortiGate to Azure VNET
+![Local FortiGate to Azure VNET](./images/local-FGT-Azure-VNet.png)
+
 
 ## How to use
 
@@ -50,15 +53,36 @@ The `fortigate.tf` file defines the call to and variables passed to the Terrafor
 
 ## Authenticating to the Cloud and to the FortiGate
 
-There are several ways to authenticate with the respective Cloud providers when using Terraform. Be sure to review the Terraform provider documentation for AWS and Azure.  The provider files in this project utilize a credentials file in the users home directory for AWS and environment varibles for Azure.
+There are several ways to authenticate with the respective Cloud providers when using Terraform. Be sure to review the Terraform provider documentation for AWS and Azure.  The provider files in this project utilize:
+  - Credentials file in the users home directory for AWS
+  - Environment variables for Azure
 
 
 ## Running Terraform
 
 1. Run `terraform init`
 
-    Running a `terraform init` will appropriatly initialize the *main* directory taking into account the call to the Terraform modules in the *fortigate* directory.
+- Running a `terraform init` will appropriately  initialize the *main* directory taking into account the call to the Terraform modules in the *fortigate* directory.
 
 2. Run `terraform plan`
+- Variable values can be specified in a number of ways
+  - In files `.tf`, `.tfvars`, `.auto.tfvars`
+  - On the commandline using `-var`
+    - `terraform plan -var "fortigate_ip_or_fqdn=192.168.20.99"`
+  - On the commandline referenceing a variables files `-varf-file`
+    - `terraform plan -var-file ../my_vars.tf`
 
-    
+3. Run `terraform apply`
+
+To remove resources with Terraform
+
+1. Run `terraform destroy`
+
+## Variables
+
+Variable values can be specified in a number of ways
+- In files `.tf`, `.tfvars`, `.auto.tfvars`
+- On the commandline using `-var`
+  - `terraform plan -var "fortigate_ip_or_fqdn=192.168.20.99"`
+- On the commandline referenceing a variables files `-varf-file`
+  - `terraform plan -var-file ../my_vars.tf`
