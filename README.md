@@ -28,7 +28,7 @@ Example of a Local FortiGate to Azure VNET
     - `subnets` - subnet name and CIDR that will be part of the created **vpc** or **vnet** network. **Minimally** one subnet needs to be defined.
     - `virtual_gateway_name` - the name of the remote (Cloud provider) gateway
 
-- These values are defined for **Azure**
+- These additional values are defined for **Azure**
     - `shared_key` - The pre shared key for the VPN
     - `virtual_gateway_connection_name` - the name of the connection (tunnel)
     - `virtual_gateway_public_ip_name` - the name of the IP address for the remote (Cloud provider) gate IP address
@@ -42,20 +42,22 @@ Example of a Local FortiGate to Azure VNET
   - `fortigate_ip_or_fqdn`- The FortiGate IP / FQDN
   - `fortigate_interface`- The FortiGate interface to use for the tunnel
   - `tunnel_name_prefix` - Tunnels are named with this prefix and sequentially numbered. For example if the prefix is AWSVPN, the tunnels would be named AWSVPN_1 and AWSVPN_2. by default AZURE only creates a single tunnel
-`tunnel_phase1_proposal` - Phase 1 tunnel encryption proposal
-`tunnel_phase2_proposal` - Phase 2 tunnel encryption proposal
+  - `tunnel_phase1_proposal` - Phase 1 tunnel encryption proposal
+  - `tunnel_phase2_proposal` - Phase 2 tunnel encryption proposal
 
 ## Calling the fortigate module
 
-The `fortigate.tf` file defines the call to and variables passed to the Terraform modules in the fortigate directory.
+The `fortigate.tf` file defines the call to, and variables passed to the Terraform modules in the fortigate directory.
 
-`fortigate.tf` in the AWS directory defines two tunnels, while `fortigte.tf` in the Azure directory defines a single tunnel.
+- `fortigate.tf` in the AWS directory defines two tunnels
+- `fortigate.tf` in the Azure directory defines a single tunnel.
 
 ## Authenticating to the Cloud and to the FortiGate
 
 There are several ways to authenticate with the respective Cloud providers when using Terraform. Be sure to review the Terraform provider documentation for AWS and Azure.  The provider files in this project utilize:
-  - Credentials file in the users home directory for AWS
-  - Environment variables for Azure
+
+  - Credentials file in the users home directory for AWS - `~/.aws/credentials`
+  - Environment variables for Azure - `creds.sh`
 
 
 ## Running Terraform
@@ -69,8 +71,8 @@ There are several ways to authenticate with the respective Cloud providers when 
   - In files `.tf`, `.tfvars`, `.auto.tfvars`
   - On the commandline using `-var`
     - `terraform plan -var "fortigate_ip_or_fqdn=192.168.20.99"`
-  - On the commandline referenceing a variables files `-varf-file`
-    - `terraform plan -var-file ../my_vars.tf`
+  - On the commandline referenceing a variables files `-var-file`
+    - `terraform plan -var-file my_vars.cfg`
 
 3. Run `terraform apply`
 
@@ -85,4 +87,4 @@ Variable values can be specified in a number of ways
 - On the command line using `-var`
   - `terraform plan -var "fortigate_ip_or_fqdn=192.168.20.99"`
 - On the command line referencing a variables files `-var-file`
-  - `terraform plan -var-file ../my_vars.tf`
+  - `terraform plan -var-file my_vars.cfg`

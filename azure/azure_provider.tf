@@ -2,13 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.42.0"
+      version = "~> 2"
     }
   }
-  required_version = ">= 0.13"
+  required_version = ">= 1.0.0"
 }
 
 provider "azurerm" {
+  features {}
 
   # There are multiple ways to authenticate
   # Check the provider docs to determine which
@@ -19,6 +20,4 @@ provider "azurerm" {
   #client_id       = var.client_id
   #client_secret   = var.client_secret
   #tenant_id       = var.tenant_id
-
-  features {}
 }

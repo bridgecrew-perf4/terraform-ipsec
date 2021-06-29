@@ -8,4 +8,5 @@ output "azure_tunnel_public_ip" {
 output "azure_shared_secret" {
   value       = azurerm_virtual_network_gateway_connection.connection.shared_key
   description = "Azure VPN Tunnel Shared Key"
+  sensitive = true
 }
