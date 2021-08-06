@@ -6,6 +6,9 @@
 *.tfstate
 *.tfstate.*
 
+# backend state storage
+backend.tf
+
 # Crash log files
 crash.log
 

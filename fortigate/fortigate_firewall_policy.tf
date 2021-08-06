@@ -20,7 +20,7 @@ resource "fortios_firewall_policy" "to_tunnel" {
   }
 
   dstaddr {
-    name = var.firewall_address_name
+    name = fortios_firewall_address.address.name
   }
 
   service {
@@ -50,7 +50,7 @@ resource "fortios_firewall_policy" "from_tunnel" {
     name = "internal"
   }
   srcaddr {
-    name = var.firewall_address_name
+    name = fortios_firewall_address.address.name
   }
 
   dstaddr {
@@ -64,6 +64,5 @@ resource "fortios_firewall_policy" "from_tunnel" {
   depends_on = [
     fortios_vpnipsec_phase1interface.phase1,
     fortios_vpnipsec_phase2interface.phase2,
-    fortios_firewall_address.address,
   ]
 }
