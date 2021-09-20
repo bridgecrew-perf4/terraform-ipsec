@@ -37,3 +37,4 @@ venv/
 sandbox/
 .vscode/
 *.code-workspace
+my_vars.cfg
