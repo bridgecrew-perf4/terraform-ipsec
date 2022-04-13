@@ -3,6 +3,6 @@ resource "azurerm_resource_group" "resource_group" {
   location = var.region
 
   tags = {
-    environment        = var.group_name
+    environment = var.group_name
   }
 }

@@ -10,7 +10,6 @@ Terraform modules to configure a Site-to-Site VPN with the Cloud provider and a 
 Example of a Local FortiGate to Azure VNET
 ![Local FortiGate to Azure VNET](./images/local-FGT-Azure-VNet.png)
 
-
 ## How to use
 
 1. Update `vpn-vars.auto.tfvars` with the values relative to the Cloud provider.

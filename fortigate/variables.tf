@@ -23,17 +23,17 @@ variable "firewall_address_name" {
 }
 
 variable "tunnel_phase1_proposal" {
-    type = string
+  type = string
 }
 
 variable "tunnel_phase2_proposal" {
-    type = string
+  type = string
 }
 
 variable "tunnel_info" {
-  type = list(object({
-    tunnel_ip = string
-    tunnel_psk = string
-    tunnel_route_distance = number
-  }))
+  #type = list(object({
+  #  tunnel_ip = string
+  #  tunnel_psk = string
+  #  tunnel_route_distance = number
+  #}))
 }

@@ -15,16 +15,16 @@ module "fortigate" {
   fortigate_interface = var.fortigate_interface
 
   # AWS Creates two tunnels
-  tunnel_info = [
-    {
+  tunnel_info = {
+    aws_tunnel_1 = {
       tunnel_ip             = aws_vpn_connection.site_to_site.tunnel1_address
       tunnel_psk            = aws_vpn_connection.site_to_site.tunnel1_preshared_key
       tunnel_route_distance = 2
-    },
-    {
+    }
+    aws_tunnel_2 = {
       tunnel_ip             = aws_vpn_connection.site_to_site.tunnel2_address
       tunnel_psk            = aws_vpn_connection.site_to_site.tunnel2_preshared_key
       tunnel_route_distance = 3
-    },
-  ]
+    }
+  }
 }

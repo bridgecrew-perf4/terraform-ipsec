@@ -15,11 +15,11 @@ module "fortigate" {
   fortigate_interface = var.fortigate_interface
 
   # Azure creates a single tunnel by default
-  tunnel_info = [
-    {
+  tunnel_info = {
+    azure_tunnel_1 = {
       tunnel_ip             = azurerm_public_ip.public_ip.ip_address
       tunnel_psk            = var.shared_key
       tunnel_route_distance = 2
-    },
-  ]
+    }
+  }
 }

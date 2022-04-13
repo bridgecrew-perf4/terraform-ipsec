@@ -1,5 +1,7 @@
 resource "fortios_firewall_policy" "to_tunnel" {
-  count = length(var.tunnel_info)
+  #count = length(var.tunnel_info)
+
+  for_each = var.tunnel_info
 
   action     = "accept"
   logtraffic = "utm"
@@ -7,13 +9,15 @@ resource "fortios_firewall_policy" "to_tunnel" {
   status     = "enable"
   schedule   = "always"
 
-  name = format("to_%s_%s", var.tunnel_name_prefix, count.index + 1)
+  name = format("to_%s", each.key)
+  #name = format("to_%s_%s", var.tunnel_name_prefix, count.index + 1)
   srcintf {
     name = "internal"
   }
 
   dstintf {
-    name = format("%s_%s", var.tunnel_name_prefix, count.index + 1)
+    name = each.key
+    #name = format("%s_%s", var.tunnel_name_prefix, count.index + 1)
   }
   srcaddr {
     name = "all"
@@ -29,21 +33,25 @@ resource "fortios_firewall_policy" "to_tunnel" {
 
   depends_on = [
     fortios_vpnipsec_phase1interface.phase1,
-    fortios_vpnipsec_phase2interface.phase2,
+    fortios_vpnipsec_phase2interface.phase2
   ]
 }
 
 resource "fortios_firewall_policy" "from_tunnel" {
-  count = length(var.tunnel_info)
+  #count = length(var.tunnel_info)
+
+  for_each = var.tunnel_info
 
   action   = "accept"
   nat      = "disable"
   status   = "enable"
   schedule = "always"
 
-  name = format("from_%s_%s", var.tunnel_name_prefix, count.index + 1)
+  name = each.key
+  #name = format("from_%s_%", var.tunnel_name_prefix, count.index + 1)
   srcintf {
-    name = format("%s_%s", var.tunnel_name_prefix, count.index + 1)
+    name = each.key
+    #name = format("%s_%s", var.tunnel_name_prefix, count.index + 1)
   }
 
   dstintf {
@@ -63,6 +71,6 @@ resource "fortios_firewall_policy" "from_tunnel" {
 
   depends_on = [
     fortios_vpnipsec_phase1interface.phase1,
-    fortios_vpnipsec_phase2interface.phase2,
+    fortios_vpnipsec_phase2interface.phase2
   ]
 }
